@@ -1,0 +1,6 @@
+1-Instagram
+2-FaceBook
+3-Discord
+4-Telegram
+5-WhatsApp
+6-Skype
