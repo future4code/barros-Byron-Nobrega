@@ -11,9 +11,6 @@
  * 
  */
 
-
-console.log("Boas vindas ao jogo de Blackjack!");
-
 let arrayUsuarioCartas = []
 let arrayComputadorCartas = []
 
@@ -22,9 +19,7 @@ Quer iniciar uma nova rodada?`)) {
 
     const carts = () => {
         arrayUsuarioCartas = [comprarCarta(), comprarCarta()]
-
         arrayComputadorCartas = [comprarCarta(), comprarCarta()]
-
     }
     carts();
 
@@ -35,53 +30,78 @@ Quer iniciar uma nova rodada?`)) {
         carts();
     }
 
-    //let pontosUsuario = arrayUsuarioCartas[0].valor + arrayUsuarioCartas[1].valor;
-    //let pontosComputador = arrayComputadorCartas[0].valor + arrayComputadorCartas[1].valor;
     let textosCartas = ""
-    let valorPontos = 0
+    let pontosCartas = 0
 
     const metodoCartas = (array) => {
 
         for (let carta of array) {
             textosCartas += carta.texto + " "
-            valorPontos += carta.valor
+            pontosCartas += carta.valor
         }
     }
+    metodoCartas(arrayUsuarioCartas)
     let comprandoCartaUsuario = true
 
     while (comprandoCartaUsuario) {
+        textosCartas = ""
+        pontosCartas = 0
         metodoCartas(arrayUsuarioCartas)
 
-        if (valorPontos > 21) {
+        if (pontosCartas > 21) {
             comprandoCartaUsuario = false
         } else {
-            let confirmCompra = confirm(
+            let comprar = confirm(
                 `Suas cartas são ${textosCartas} 
                  A carta revelada do computador é ${arrayComputadorCartas[0].texto}
                  Deseja comprar mais uma carta?`
             )
 
-            if (confirmCompra) {
+            if (comprar) {
                 arrayUsuarioCartas.push(comprarCarta())
+
             } else {
                 comprandoCartaUsuario = false
             }
         }
     }
+    let textosCartasUsuario = textosCartas
+    let valorPontosUsuario = pontosCartas
+    textosCartas = ""
+    pontosCartas = 0
+    metodoCartas(arrayComputadorCartas)
 
+    if (valorPontosUsuario <= 21) {
 
+        while (pontosCartas <= 21 && pontosCartas < valorPontosUsuario) {
+            arrayComputadorCartas.push(comprarCarta())
+            textosCartas = ""
+            pontosCartas = 0
+            metodoCartas(arrayComputadorCartas)
+        }
 
-    /* console.log(`Usuário - cartas: ${usuarioCartas[0].texto} ${usuarioCartas[1].texto} - pontuação ${pontosUsuario}`)
-    console.log(`Computador - cartas: ${computadorCartas[0].texto} ${computadorCartas[1].texto} - pontuação ${pontosComputador}`) */
-    // imprime o texto da carta. Nesse caso: "K♦️"
-    if (pontosUsuario > pontosComputador) {
-        console.log("O usuário ganhou!")
-    } else if (pontosComputador > pontosUsuario) {
-        console.log("O computador ganhou!")
-    } else if (pontosUsuario === pontosComputador) {
-        console.log("Empate!")
     }
 
-} else {
-    console.log("O jogo acabou");
+    let textosCartasComputador = textosCartas
+    let valorPontosComputador = pontosCartas
+    let ganhador
+    if (valorPontosComputador > valorPontosUsuario && valorPontosComputador <= 21) {
+        ganhador = `O computador ganhou!`
+    } else if (valorPontosUsuario > valorPontosComputador && valorPontosUsuario <= 21) {
+        ganhador = `Você ganhou!`
+    } else if (valorPontosComputador <= 21 && valorPontosUsuario > 21) {
+        ganhador = `O computador ganhou!`
+    } else if (valorPontosUsuario <= 21 && valorPontosComputador > 21) {
+        ganhador = `Você ganhou!`
+    } else {
+        ganhador = `Jogo Empatado`
+    }
+
+    alert(
+        `Suas cartas são ${textosCartasUsuario} . Sua pontuação é ${valorPontosUsuario}.
+        As cartas do computador são ${textosCartasComputador} . A pontuação do computador é ${valorPontosComputador}
+        ${ganhador}`
+
+    )
+
 }
