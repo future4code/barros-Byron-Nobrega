@@ -87,27 +87,11 @@ function retornaObjetoEntreDoisNumeros(num1, num2) {
 // EXERCÍCIO 08
 function retornaNPrimeirosPares(n) {
     const numero = []
-    let i = 0
-    let repetir = [n]
-    console.log(n);
-
-    console.log(repetir[0]);
-    n = repetir.shift()
-    n += 1
-    console.log(n);
-    do {
+    for (let i = 0; numero.length < n; i++) {
         if (i % 2 === 0) {
             numero.push(i)
-
         }
-        i++
-    } while (i <= n);
-    /* for (let i = 0; i <= n; i++) {
-        if (i % 2 === 0) {
-            console.log(i);
-            numero.push(i)
-        }
-    } */
+    }
     return numero
 }
 
@@ -125,14 +109,24 @@ function classificaTriangulo(ladoA, ladoB, ladoC) {
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
     const maiorMenor = []
-    let maior = Math.max(...array)
-    array.shift(maior)
-    let menor = Math.min(...array)
-    array.shift(menor)
-    maior = Math.max(...array)
-    menor = Math.min(...array)
-    maiorMenor.push(maior)
-    maiorMenor.push(menor)
+    let maior
+    let menor
+
+    if (array.length > 2) {
+        maior = Math.max(...array)
+        array.splice(array.indexOf(maior), 1)
+        menor = Math.min(...array)
+        array.splice(array.indexOf(menor), 1)
+        maior = Math.max(...array)
+        menor = Math.min(...array)
+        maiorMenor.push(maior)
+        maiorMenor.push(menor)
+    } else if (array.length = 2) {
+        maior = Math.max(...array)
+        menor = Math.min(...array)
+        maiorMenor.push(menor)
+        maiorMenor.push(maior)
+    }
     return maiorMenor
 
 }
@@ -159,43 +153,97 @@ function retornaPessoaAnonimizada(pessoa) {
 
 // EXERCÍCIO 13A
 function retornaPessoasAutorizadas(pessoas) {
-    const pegarIdade = pessoas.filter((pessoa, index, array) => {
-        return pessoa.idade > 14
-    })
-    const pegarAltura = pegarIdade.filter((pessoa, index, array) => {
-        return pessoa.altura >= 1.5
-    })
-    const pegarIdoso = pegarAltura.filter((pessoa, index, array) => {
-        return pessoa.idade < 60
-    })
-    return pegarIdoso
+    return pessoas.filter(autorizadas => {
+            return (autorizadas.idade > 14 && autorizadas.altura >= 1.5 &&
+                autorizadas.idade < 60)
+        })
+        /* const pegarIdade = pessoas.filter((pessoa, index, array) => {
+            return pessoa.idade > 14
+        })
+        const pegarAltura = pegarIdade.filter((pessoa, index, array) => {
+            return pessoa.altura >= 1.5
+        })
+        const pegarIdoso = pegarAltura.filter((pessoa, index, array) => {
+            return pessoa.idade < 60
+        }) 
+        return pegarIdoso*/
 }
 
 // EXERCÍCIO 13B
 function retornaPessoasNaoAutorizadas(pessoas) {
-    const pegarMenorIdade = pessoas.filter((pessoa, index, array) => {
-        return pessoa.nome
-    })
-    const pegar = pegarMenorIdade.filter((pessoa, index, array) => {
-        return pessoa.nome !== "D"
-    })
-    return pegarMenorIdade
+    return pessoas.filter(autorizadas => {
+            return (autorizadas.idade <= 14 || autorizadas.altura < 1.5 ||
+                autorizadas.idade > 60)
+        })
+        /* const pegarMenorIdade = pessoas.filter((pessoa, index, array) => {
+            return pessoa.idade <= 14
+        })
+        const pegar = pessoas.filter((pessoa, index, array) => {
+            return pessoa.altura < 1.5
+        })
+        const listaNaoAutorizada = [...pegarMenorIdade, ...pegar]
+        listaNaoAutorizada.sort((a, b) => {
+            if (a.nome < b.nome) {
+                return -1;
+            } else {
+                return true
+            }
+        })
+
+        return listaNaoAutorizada */
 }
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
+    for (let i = 0; i < contas.length; i++) {
+        let totalCompras = [];
+        calculaSaldo(contas)
+
+        function calculaSaldo(utilizador) {
+            utilizador[i].compras.forEach(valorCompras => totalCompras.push(valorCompras * -1));
+        }
+
+        function somaNumeros(numeros) {
+            return numeros.reduce((somar, valorCompras) => somar + valorCompras, 0);
+        }
+        contas[i].compras = []
+        contas[i].saldoTotal += somaNumeros(totalCompras)
+
+    }
+
+    return contas
 
 }
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-    const ordemAlfabetica = consultas.filter((nome, index, array) => {
-        return nome.nome
+    const ordenAlfabetica = consultas.sort((a, b) => {
+        return a.nome.localeCompare(b.nome)
+    });
+    return ordenAlfabetica
+
+    /* consultas.sort((a, b) => {
+        if (a.nome < b.nome) {
+            return -1;
+        } else {
+            return 1
+        }
     })
-    return ordemAlfabetica
+    return consultas */
 }
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
+    for (let i = 0; i < consultas.length; i++) {
+        consultas.sort((a, b) => {
+            if (a.dataDaConsulta.split('/')[i] > b.dataDaConsulta.split('/')[i]) {
+                return 1;
+            } else if (a.dataDaConsulta.split('/')[i] < b.dataDaConsulta.split('/')[i]) {
+                return -1
+            }
 
+        })
+    }
+
+    return consultas
 }
