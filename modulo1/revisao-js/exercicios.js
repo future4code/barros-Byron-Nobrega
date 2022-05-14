@@ -32,15 +32,14 @@ function retornaNumerosPares(array) {
         return item % 2 === 0
     })
     return par
-
-    /*   const par = []
-        for (let i = 0; i < array.length; i++) {
-            let ePar = array[i]
-            if (ePar % 2 === 0) {
-                par.push(ePar)
+        /*   const par = []
+            for (let i = 0; i < array.length; i++) {
+                let ePar = array[i]
+                if (ePar % 2 === 0) {
+                    par.push(ePar)
+                }
             }
-        }
-        return par */
+            return par */
 }
 
 
