@@ -32,15 +32,14 @@ function retornaNumerosPares(array) {
         return item % 2 === 0
     })
     return par
-
-    /*   const par = []
-        for (let i = 0; i < array.length; i++) {
-            let ePar = array[i]
-            if (ePar % 2 === 0) {
-                par.push(ePar)
+        /*   const par = []
+            for (let i = 0; i < array.length; i++) {
+                let ePar = array[i]
+                if (ePar % 2 === 0) {
+                    par.push(ePar)
+                }
             }
-        }
-        return par */
+            return par */
 }
 
 
@@ -133,10 +132,6 @@ function retornaSegundoMaiorESegundoMenor(array) {
 
 // EXERCÍCIO 11
 function retornaChamadaDeFilme(filme) {
-    let frase = ""
-    for (let ator of filme.atores) {
-        frase += ator + ", "
-    }
     return `Venha assistir ao filme ${filme.nome}, de ${filme.ano}, dirigido por ${filme.diretor} e estrelado por ${filme.atores[0]}, ${filme.atores[1]}, ${filme.atores[2]}, ${filme.atores[3]}.`
 }
 
