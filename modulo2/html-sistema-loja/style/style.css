@@ -1,0 +1,47 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    text-align: center;
+    color: white;
+    background-color: blue;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+body {
+    font-family: arial, helvetica, sans-serif;
+    font-size: 12px;
+}
+
+nav {
+    background-color: blue;
+    text-align: center;
+    color: white;
+}
+
+a {
+    font-size: 20px;
+    color: white;
+}
+
+.img {
+    display: inline;
+    width: 1800px;
+    height: 500px;
+}
+
+.rede-social {
+    bottom: 0px;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.img-fruta {
+    height: 50px;
+    width: 50 px
+}
