@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header,
+footer {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-top: 25px;
+    padding-bottom: 5px;
+    color: white;
+    background-color: rgb(9, 122, 214);
+}
+
+body {
+    font-family: arial, helvetica, sans-serif;
+    font-size: 14px;
+    background-color: lightgray;
+}
+
+h1 {
+    text-align: center;
+}
+
+.imgProjeto {
+    margin-top: 70px;
+    text-align: center;
+}
+
+section>p {
+    padding: 20px;
+    margin-left: 340px;
+    margin-right: 340px;
+    font-size: 15px;
+}
+
+h4 {
+    font-size: 20px;
+    padding-top: 30px;
+    margin-left: 340px;
+}
+
+.tecnologias {
+    font-size: 15px;
+    padding-top: 30px;
+    display: flex;
+    margin-left: 360px;
+    margin-bottom: 80px;
+    /* justify-content: center; */
+}
