@@ -19,17 +19,18 @@
     <nav class="nav-reader">
         <a class="titulo-nome" href="#">Byron Belizario Smith Nobrega</a>
         <ul class="menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#empregadores">Sobre</a></li>
-            <li><a href="#">O que fazemos?</a></li>
-            <li><a href="#">Links</a></li>
-            <li><a href="#">Contato</a></li>
+            <li><a href="#nome-pessoa">Home</a></li>
+            <li><a href="#sobreMim">Sobre</a></li>
+            <li><a href="#ensino">Instituições de Ensino</a></li>
+            <li><a href="#empregadores">Empregadores</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#contato">Contato</a></li>
         </ul>
     </nav>
 </header>
 
 <body>
-    <section class="nome-pessoa">
+    <section id="nome-pessoa" class="nome-pessoa">
         <img class="foto-perfil" src="img/byron.jpg" alt="imagem Byron" width="100">
         <h1>Byron Belizario Smith Nobrega</h1>
         <p>Software Developer</p>
@@ -65,9 +66,10 @@
     <section id="empregadores" class="empregadores">
         <h3>Empregadores</h3>
         <div class="ensino">
-            <li>IBM</li>
-            <li>Google</li>
-            <li>Sidi Samsung</li>
+            <ul>
+                <li>IBM</li>
+                <li>Google</li>
+                <li>Sidi Samsung</li>
             </ul>
         </div>
     </section>
@@ -93,6 +95,23 @@
             </div>
         </div>
     </section>
+    <section id="contato">
+        <H3>Entre em Contato</H3>
+        <form method="post" action="mailto:byronnobrega@hotmail.com">
+            <fieldset>
+                <div>
+                    <label for="">Nome:</label>
+                    <input type="text" name="nome" id="nome">
+                </div>
+                <div>
+                    <label for="">Sobrenome:</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <input type="submit" value="Enviar email" />
+            </fieldset>
+    </section>
+    </form>
+
     <footer>
         <p>fim</p>
     </footer>
