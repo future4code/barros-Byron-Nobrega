@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Header */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20px;
+    background-color: mediumvioletred;
+}
+
+header>a {
+    padding: 5px;
+    margin: 5px;
+    text-decoration: none;
+    background-color: darkgrey;
+}
+
+
+/* Body */
+
+main {
+    display: flex;
+}
+
+.nav_menu {
+    width: 300PX;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: #f2d0e0;
+}
+
+.icon {
+    width: 20px;
+    right: 20px;
+    margin-left: 20px;
+}
+
+.itens_menu {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+
+.galeria {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.bolo {
+    box-shadow: 5px 5px 5px darkgray;
+    margin: 10px;
+    max-width: 200px;
+}
+
+.bolo>img {
+    width: 150px;
+    right: 150px;
+}
+
+.bolo>p {
+    font-size: 12px;
+}
+
+footer {
+    padding: 15px 0;
+    font-weight: bold;
+    background-color: mediumvioletred;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
