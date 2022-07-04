@@ -4,7 +4,7 @@ function InputGeral(props) {
   return (
     <div className="InputGeral">
       <div>
-        <p>{props.texto}</p>
+        <label>{props.texto}</label>
         <input type="text" id="lname" name="lname" />
       </div>
     </div>

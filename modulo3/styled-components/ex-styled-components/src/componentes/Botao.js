@@ -1,5 +1,5 @@
 import React from "react";
 
 export function Botao(props) {
-  return <button>Enviar Mensagem</button>;
+  return <button>{props.texto}</button>;
 }

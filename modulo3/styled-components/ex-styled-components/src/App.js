@@ -19,8 +19,8 @@ function App() {
       <Cabeca>
         <Cabecalho imagem={logo} alt="Logo" texto="LabZap" />
       </Cabeca>
-      <Lateraisd></Lateraisd>
-      <LateraisE></LateraisE>
+      <Lateraisd/>
+      <LateraisE/>
       <InputRemetente>
         <InputGeral texto="Remetente:" />
       </InputRemetente>
@@ -28,7 +28,7 @@ function App() {
         <InputGeral texto="Msg:" />
       </InputMsn>
       <BotaoEnviar>
-        <Botao />
+        <Botao texto = "Enviar Mensagem"/>
       </BotaoEnviar>
       <FimPagina>
         <Rodape texto="Copyright 2022 Byron Smith" />
