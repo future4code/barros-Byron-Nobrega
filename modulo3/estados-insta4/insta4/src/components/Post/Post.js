@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./style.css";
-
+import { ItemLista, IconesPost, PostContainer } from "../../style";
+/* import "./style.css";  */
 import { IconeComContador } from "../IconeComContador/IconeComContador";
 import iconeCoracaoBranco from "../../img/favorite-white.svg";
 import iconeCoracaoPreto from "../../img/favorite.svg";
@@ -8,13 +8,6 @@ import iconeComentario from "../../img/comment_icon.svg";
 import { SecaoComentario } from "../SecaoComentario/SecaoComentario";
 
 function Post(props) {
-  const [state, setState] = useState({
-    curtido: false,
-    numeroCurtidas: 0,
-    comentando: false,
-    numeroComentarios: 0,
-  }); //Oque faz esse cod?
-
   const [numeroCurtidas, setnumeroCurtidas] = useState(0); //inicia o useState de numero de curtidas
   const [curtido, setCurtido] = useState(false);
   const [comentando, setComentando] = useState(false);
@@ -73,21 +66,31 @@ function Post(props) {
     ); //Porque isso?
   }
 
+  const arrayPost = [props.lista];
+
+  const arrayElementos = arrayPost.map((item, index) => {
+    return (
+      <ItemLista key={index}>
+        <div className="PostHeader">
+          <p>{item.nomeUsuario}</p>
+          <img className="UserPhoto" src={item.fotoUsuario} alt={"Imagem do usuario"}/>
+        </div>
+        <img className="PostPhoto" src={item.fotoPost} alt={"Imagem do post"} />
+      </ItemLista>
+    );
+  });
+  
+
   return (
-    <div className="PostContainer">
-      <div className="PostHeader">
-        <img
-          className="UserPhoto"
-          src={props.fotoUsuario}
-          alt={"Imagem do usuario"}
-        />
-        <p>{props.nomeUsuario}</p>
-      </div>
-      {/* objetos a preencher html props */}
+    <PostContainer>
+      {/* <div className="PostHeader"> */}
+      {arrayElementos}
+      {/* <img className="UserPhoto" src={props.fotoUsuario} alt={"Imagem do usuario"}/>
+        <p>{props.nomeUsuario}</p> */}
 
-      <img className="PostPhoto" src={props.fotoPost} alt={"Imagem do post"} />
-
-      <div className="PostFooter">
+      {/* <img className="PostPhoto" src={props.fotoPost} alt={"Imagem do post"} /> */}
+      <IconesPost>
+        {/* <div className="PostFooter"> */}
         <IconeComContador
           icone={iconeCurtida}
           onClickIcone={onClickCurtida}
@@ -99,9 +102,10 @@ function Post(props) {
           onClickIcone={onClickComentario}
           valorContador={numeroComentarios}
         />
-      </div>
+        {/* </div> */}
+      </IconesPost>
       {componenteComentario}
-    </div>
+    </PostContainer>
   );
 }
 
