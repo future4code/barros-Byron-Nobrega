@@ -1,16 +1,16 @@
-import React from "react";
-import { Comentarios } from "../../style";
+import React from 'react'
+import { CommentContainer, InputComentario } from './style'
+
 
 export function SecaoComentario(props) {
-   return (
-    <Comentarios>
-          <input
-        className="InputComentario"
-        placeholder={"Comentário"}
-        value={props.inputComenta}
-        onChange={props.onChangeComentario}
-      />
-      <button onClick={props.aoEnviar}>Enviar</button>
-    </Comentarios>
-  );
+    return (
+        <CommentContainer>
+            <InputComentario className='InputComentario'
+                placeholder={'Comentário'}
+                value={props.comentario}
+                onChange={props.onChangeComentario}
+            />
+            <button onClick={props.aoEnviar}>Enviar</button>
+        </CommentContainer>
+    )
 }
