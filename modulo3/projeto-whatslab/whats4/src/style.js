@@ -5,6 +5,7 @@ export const AreaMensagem=styled.main`
   justify-content: center;
   height: 100vh;
   align-items: flex-end;
+
   
 `;
 
@@ -13,7 +14,7 @@ export const PostMsg = styled.div`
     flex-direction: column;
     max-width: max-content;    
     word-wrap: break-word;
-    border: 1px black solid;
+    border: 1px solid white;
     border-radius:10px;
     margin-bottom: 10px;
     background-color: white;
@@ -22,9 +23,7 @@ export const PostMsg = styled.div`
     margin-right:1px ;
     margin: 2px 2px 3px 3px;
     max-width: 64vh; 
-    word-wrap: break-word;
-    
-    
+    word-wrap: break-word;        
    }
   `;
 
@@ -33,19 +32,30 @@ export const PostForm = styled.form`
   position: fixed;
   margin: 0;
   padding: 0;
-  background-color: green;
   margin-bottom: 22px;
+  border: none;
+  
   
   .inputUser {
     height: 5vh;
-    width: 10vw;
+    width: 9vw;
+    border-radius: 10px;
+    margin: 2px;
+    border: none;
+
   };
   .inputMsn {
     height: 5vh;
     width: 35.5vw;
+    border-radius: 10px;
+    margin: 2px;
+    border: none;
   };
   button{
     height: 5.5vh;
+    border-radius: 10px;
+    margin: 2px;
+    border: none;
   }
 
 `;
@@ -55,7 +65,7 @@ export const PostContainer = styled.div`
     /* justify-content: flex-end;  */
     align-items: flex-end;
     border: 3px solid black;
-    height: 100%;
+    height: 96%;
     width: 50%;
     /* margin: 0;
     padding: 0; */
