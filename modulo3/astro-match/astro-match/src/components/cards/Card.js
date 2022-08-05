@@ -1,4 +1,11 @@
 import React from "react";
+import { BiDislike,BiLike } from "react-icons/bi";
+import { FaCommentAlt } from "react-icons/fa";
+import {CgUserList} from "react-icons/cg";
+import {AiFillLike,AiFillDislike} from "react-icons/ai";
+import { PostContainer, PostHeader, PostPhoto, UserPhoto } from "./style";
+
+
 
 
 function Cards(props) {
@@ -7,30 +14,32 @@ function Cards(props) {
 const selecionarTela = (event) => {
     event.preventDefault();
     props.onPressGetMatches();
-    props.setSeletorTela(true);
+    props.setSeletorTela("list");
   };
  const functioDoButton = (event)=>{
     event.preventDefault();
+    props.setIdBody(props.getProfile.id)
     props.setChoiceBody(true);
     props.onPressPostChoosePerson();
     props.onPressGetProfile();
 
-} 
+}
+ 
   
   
   return(
-      <div>
-        <h1>Astro Match</h1>
-        <button onClick={selecionarTela}>Lista</button>
-        <div>
-        <img src={props.getProfile.photo} alt={props.getProfile.photo_alt}/>
+    <>
+        <button onClick={selecionarTela}><CgUserList/></button>
+      <PostContainer>        
+        <PostPhoto src={props.getProfile.photo} alt={props.getProfile.photo_alt}/>
+      </PostContainer>
+        <PostHeader>
         <p>{props.getProfile.name}, {props.getProfile.age} anos.</p>
         <p>{props.getProfile.bio}</p>
-        </div>
-        <button onClick={functioDoButton}>Curtil ♥</button>
-        <button onClick={props.onPressGetProfile}>Não Curtil</button>
-        
-      </div>
+        </PostHeader>             
+        <button onClick={functioDoButton}><BiLike/></button>
+        <button onClick={props.onPressGetProfile}><BiDislike/></button>
+    </>
  ) 
     
     

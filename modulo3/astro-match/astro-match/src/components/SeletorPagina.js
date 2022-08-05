@@ -4,10 +4,11 @@ import Cards from "./cards/Card";
 import ListaMatch from "./ListMatch";
 
 function SeletroPagina() {
-  const [seletroTela, setSeletorTela] = useState(false);
+  const [seletroTela, setSeletorTela] = useState("vazio");
   const [getPrifile, setGetProfile] = useState("");
   const [getMatchesList, setGetMatchesList] = useState([]);
-  const [choiceBody, setChoiceBody] = useState("")
+  const [choiceBody, setChoiceBody] = useState("");
+  const [id, setId] = useState(123);
 
   const aluno = "Byron";
   const url =
@@ -15,21 +16,26 @@ function SeletroPagina() {
   const filePerson = "/person";
   const fileMatches = "/matches";
   const filechoose = "/choose-person";
-  const fileClear = "/clear"
+  const fileClear = "/clear";
 
-  const body =  {
-      id: getPrifile.id,
-      choice: choiceBody,
-    };
+  const body = {
+    id: id,
+    choice: choiceBody,
+  };
 
   const getProfileToChoose = () => {
     axios
       .get(url + aluno + filePerson, {})
       .then((response) => {
         setGetProfile(response.data.profile);
+        if (response.data.profile === null) {
+          setSeletorTela("vazio");
+        } else {
+          setSeletorTela("post");
+        }
       })
       .catch((error) => {
-        alert("Erro ao carregar perfil:" + error.response.data);
+        setSeletorTela("vazio");
       });
   };
 
@@ -44,16 +50,13 @@ function SeletroPagina() {
       });
   };
 
-    const postChoosePerson = () => {
+  const postChoosePerson = () => {
     axios
-      .post(url + aluno + filechoose, body, {
-      })
+      .post(url + aluno + filechoose, body, {})
       .then((response) => {
-        if(response.data.isMatch === true){
-            
-            alert(getPrifile.name+" reagiu a sua curtida!")
+        if (response.data.isMatch === true) {
+          alert(getPrifile.name + " reagiu a sua curtida!");
         }
-        console.log(response.data.isMatch);
       })
       .catch((error) => {
         alert("Erro ao carregar a lista " + error.response.data);
@@ -61,48 +64,72 @@ function SeletroPagina() {
   };
   const putClear = () => {
     axios
-      .put(url + aluno + fileClear, {
-      })
+      .put(url + aluno + fileClear, {})
       .then((response) => {
-        alert("Lista limpa com sucesso!")
-        console.log(response.data.message);
+        alert("Lista limpa com sucesso!");
       })
       .catch((error) => {
         alert("Erro ao carregar a lista " + error.response.data);
       });
   };
 
-
-
-useEffect(() => {
+  useEffect(() => {
     getProfileToChoose();
-  }, []); 
-useEffect(() => {
+  }, []);
+  useEffect(() => {
     getMatches();
-  }, []); 
-  
+  }, []);
 
-  if (seletroTela === true) {
-    return (
-      <ListaMatch
-        setSeletorTela={setSeletorTela}
-        getMatchesList={getMatchesList}
-        onPressputClear={putClear} 
-        setGetMatchesList={setGetMatchesList}     
-      />
-    );
-  } else {
-    return (
-      <Cards
-        setSeletorTela={setSeletorTela}
-        getProfile={getPrifile}
-        setChoiceBody={setChoiceBody}
-        onPressGetProfile={getProfileToChoose}
-        onPressGetMatchesList={getMatches}
-        onPressPostChoosePerson={()=>{postChoosePerson()}}
-        onPressGetMatches={getMatches}
-      />
-    );
+  const buttonDefaltList = (event) => {
+    event.preventDefault();
+    putClear();
+    setSeletorTela("post");
+  };
+  const buttonVerLista = (event) => {
+    event.preventDefault();
+    getMatches();
+    setSeletorTela("list");
+  };
+
+  switch (seletroTela) {
+    case "post":
+      return (
+        <Cards
+          setSeletorTela={setSeletorTela}
+          seletroTela={seletroTela}
+          getProfile={getPrifile}
+          setChoiceBody={setChoiceBody}
+          setIdBody={setId}
+          onPressGetProfile={getProfileToChoose}
+          onPressGetMatchesList={getMatches}
+          onPressPostChoosePerson={() => {
+            postChoosePerson();
+          }}
+          onPressGetMatches={getMatches}
+        />
+      );
+
+    case "list":
+      return (
+        <ListaMatch
+          setSeletorTela={setSeletorTela}
+          seletroTela={seletroTela}
+          getMatchesList={getMatchesList}
+          onPressputClear={putClear}
+          setGetMatchesList={setGetMatchesList}
+          onPressGetProfile={getProfileToChoose}
+        />
+      );
+
+    default:
+      return (
+        <div>
+          <h1>Fim dos Perfis para continuar:</h1>
+          <button onClick={buttonDefaltList}>Clique aqui</button>
+          <h3>Ver curtidas:</h3>
+          <button onClick={buttonVerLista}>Ver</button>
+        </div>
+      );
   }
 }
 

@@ -1,21 +1,29 @@
 import styled from "styled-components";
 
 export const PostContainer = styled.div` 
-    display: flex;
-    flex-direction: row;
+   /*  display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center; */
     
     border: 1px solid gray;
-    width: 300px;
-    margin-bottom: 10px;
+    width: 400px;
+    
+   
     
 ` 
 
 
 export const PostHeader = styled.div`
-    height: 40px;
-    display: flex;
-    align-items: center;
+   position: fixed;
+   top:400px;
+   color: white;
+   height: 40px;
+   width: 400px;
+   
+
+   /*   display: flex;
+    align-items: center; */
     padding-left: 10px;
 `
 
@@ -26,6 +34,7 @@ export const PostFooter = styled.div`
     align-items: center;
     padding: 0 10px;
     justify-content: space-between;
+    
 `
 
 
@@ -39,4 +48,5 @@ export const UserPhoto = styled.img`
     
 export const PostPhoto = styled.img` 
     width: 100%;
+    height: 400px;
 `

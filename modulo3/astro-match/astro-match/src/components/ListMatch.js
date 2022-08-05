@@ -8,9 +8,15 @@ function ListaMatch(props) {
         )
 
     })
+    
     const selecionarTela = (event) => {
+        
         event.preventDefault();
-        props.setSeletorTela(false);
+        if(props.seletroTela!=="vazio"){
+            props.setSeletorTela("post");
+        }else{
+            props.setSeletorTela("vazio");
+        }
       };
     const limparLista = (event) => {
         event.preventDefault();
