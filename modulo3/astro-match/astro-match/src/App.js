@@ -1,10 +1,13 @@
 import './App.css';
 import SeletroPagina from './components/SeletorPagina';
 
-function App() {
+
+
+function App(props) {
+
+
   return (
     <div className="App">
-      <h1>Astro Match</h1>
       <SeletroPagina/>
       
     </div>

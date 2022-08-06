@@ -1,9 +1,7 @@
 import React from "react";
 import { BiDislike,BiLike } from "react-icons/bi";
-import { FaCommentAlt } from "react-icons/fa";
 import {CgUserList} from "react-icons/cg";
-import {AiFillLike,AiFillDislike} from "react-icons/ai";
-import { PostContainer, PostHeader, PostPhoto, UserPhoto } from "./style";
+import { PostBody, PostButtonFooterDiLike, PostButtonFooterLike, PostButtonHeader, PostContainer, PostFooter, PostHeader, PostPhoto } from "./style";
 
 
 
@@ -20,8 +18,8 @@ const selecionarTela = (event) => {
     event.preventDefault();
     props.setIdBody(props.getProfile.id)
     props.setChoiceBody(true);
-    props.onPressPostChoosePerson();
     props.onPressGetProfile();
+    props.onPressPostChoosePerson();
 
 }
  
@@ -29,16 +27,21 @@ const selecionarTela = (event) => {
   
   return(
     <>
-        <button onClick={selecionarTela}><CgUserList/></button>
+    <PostHeader>
+       <h1>Astro Match</h1>
+        <PostButtonHeader onClick={selecionarTela}><CgUserList/></PostButtonHeader>
+    </PostHeader>
       <PostContainer>        
         <PostPhoto src={props.getProfile.photo} alt={props.getProfile.photo_alt}/>
       </PostContainer>
-        <PostHeader>
-        <p>{props.getProfile.name}, {props.getProfile.age} anos.</p>
-        <p>{props.getProfile.bio}</p>
-        </PostHeader>             
-        <button onClick={functioDoButton}><BiLike/></button>
-        <button onClick={props.onPressGetProfile}><BiDislike/></button>
+        <PostBody>
+        <h3>{props.getProfile.name}, {props.getProfile.age} anos.</h3>
+        <p><b>{props.getProfile.bio}</b></p>
+        </PostBody>  
+        <PostFooter>
+        <PostButtonFooterLike onClick={functioDoButton}><BiLike/></PostButtonFooterLike>
+        <PostButtonFooterDiLike onClick={props.onPressGetProfile}><BiDislike/></PostButtonFooterDiLike>
+        </PostFooter>           
     </>
  ) 
     

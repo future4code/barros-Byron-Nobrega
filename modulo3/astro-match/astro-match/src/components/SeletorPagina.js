@@ -1,13 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Cards from "./cards/Card";
-import ListaMatch from "./ListMatch";
+import ListaMatch from "./ListMatch/ListMatch";
 
 function SeletroPagina() {
   const [seletroTela, setSeletorTela] = useState("vazio");
   const [getPrifile, setGetProfile] = useState("");
   const [getMatchesList, setGetMatchesList] = useState([]);
-  const [choiceBody, setChoiceBody] = useState("");
+  const [choiceBody, setChoiceBody] = useState(true);
   const [id, setId] = useState(123);
 
   const aluno = "Byron";
@@ -19,7 +19,7 @@ function SeletroPagina() {
   const fileClear = "/clear";
 
   const body = {
-    id: id,
+    id: getPrifile.id,
     choice: choiceBody,
   };
 

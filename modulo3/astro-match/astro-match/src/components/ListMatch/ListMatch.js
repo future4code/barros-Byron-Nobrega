@@ -1,10 +1,14 @@
 import React from "react";
-import { UserPhoto } from "./cards/style";
+import { UserPhoto } from "../cards/style";
+import { ListBody, ListContainer } from "./ListMatchStyle";
 
 function ListaMatch(props) {
     const curtidas = props.getMatchesList.map((item, index)=>{
         return(
-            <li key={index}><UserPhoto src={item.photo}/> {item.name}</li>
+            <ListBody>
+            <UserPhoto src={item.photo}/>
+            <h3 key={index}>{item.name}</h3>
+            </ListBody>
         )
 
     })
@@ -25,11 +29,14 @@ function ListaMatch(props) {
       };
       
     return(
-        <>
+        <ListContainer>
+        <conponentBody>
+         <h1>Astro Match</h1>
         <button onClick={selecionarTela} >Voltar</button>
         <button onClick={limparLista}> Linpar Lista</button>
+        </conponentBody>
         {curtidas}
-        </>
+        </ListContainer>
     )
 }
 
