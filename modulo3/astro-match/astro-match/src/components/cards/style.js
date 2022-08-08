@@ -8,17 +8,22 @@ export const PostContainer = styled.div`
 `;
 
 export const PostHeader = styled.div`
-    display: flex;
-    justify-content: center;
-
-    `;
-    export const PostButtonHeader = styled.button`
-      margin-top:30px;
-      height: 30px;
-      width: 30px;
-      border-radius: 50px;
-      background-color: transparent;
-    `;
+  display: flex;
+  justify-content: center;
+`;
+export const PostButtonHeader = styled.button`
+  margin-top: 30px;
+  margin-left: 30px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  background-color: transparent;
+  :hover {
+    transform: scale(1.5);
+    transition: all 0.5s;
+  }
+  cursor: pointer;
+`;
 
 export const PostBody = styled.div`
   position: absolute;
@@ -35,21 +40,34 @@ export const PostFooter = styled.div`
   height: 100px;
   width: 400px;
   display: flex;
+  align-items: center;
   justify-content: space-around;
 `;
 export const PostButtonFooterLike = styled.button`
   height: 100px;
   width: 100px;
-  border-radius: 50px;
-  border: 1px solid green;
+  border: none;
   background-color: transparent;
+  font-size: 100px;
+  color: green;
+  :hover {
+    transform: scale(1.5);
+    transition: all 0.5s;
+  }
+  cursor: pointer;
 `;
 export const PostButtonFooterDiLike = styled.button`
   height: 100px;
   width: 100px;
-  border-radius: 50px;
-  border: 1px solid red;
+  border: none;
+  color: red;
+  font-size: 100px;
   background-color: transparent;
+  :hover {
+    transform: scale(1.5);
+    transition: all 0.5s;
+  }
+  cursor: pointer;
 `;
 
 export const UserPhoto = styled.img`

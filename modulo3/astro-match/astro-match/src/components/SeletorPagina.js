@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Cards from "./cards/Card";
 import ListaMatch from "./ListMatch/ListMatch";
+import { BodySeletorTela } from "./SeletorStyle";
 
 function SeletroPagina() {
   const [seletroTela, setSeletorTela] = useState("vazio");
@@ -29,9 +30,10 @@ function SeletroPagina() {
       .then((response) => {
         setGetProfile(response.data.profile);
         if (response.data.profile === null) {
-          setSeletorTela("vazio");
+          setGetProfile({ id: "123" });
         } else {
           setSeletorTela("post");
+          setGetProfile(response.data.profile);
         }
       })
       .catch((error) => {
@@ -123,12 +125,10 @@ function SeletroPagina() {
 
     default:
       return (
-        <div>
-          <h1>Fim dos Perfis para continuar:</h1>
+        <BodySeletorTela>
+          <h1>Fim dos Perfis Reset Lista</h1>
           <button onClick={buttonDefaltList}>Clique aqui</button>
-          <h3>Ver curtidas:</h3>
-          <button onClick={buttonVerLista}>Ver</button>
-        </div>
+        </BodySeletorTela>
       );
   }
 }
