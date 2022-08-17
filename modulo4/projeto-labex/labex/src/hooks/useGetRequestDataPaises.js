@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const usePostRequesData = (url,body) => {
+const useGetRequestDataPais = (url) => {
   const [data, setData] = useState(undefined);
   const [isLoading, setIsLoading] = useState(undefined);
   const [erro, setErro] = useState(undefined);
@@ -9,10 +9,10 @@ const usePostRequesData = (url,body) => {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .post(url,body)
+      .get(url)
       .then((response) => {
         setIsLoading(false);
-        alert("Cadastrado com sucesso.")
+        setData(response.data);
       })
       .catch((error) => {
         setIsLoading(false);
@@ -23,4 +23,4 @@ const usePostRequesData = (url,body) => {
   return [data, isLoading, erro];
 };
 
-export default usePostRequesData;
+export default useGetRequestDataPais;

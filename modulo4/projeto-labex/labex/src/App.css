@@ -1,5 +1,18 @@
+*{
+  margin: 0;
+  padding: 0;
+} 
 .App {
   text-align: center;
+  color: white;
+  background-image: url(imgApp.jpg);
+  background-position:center ;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
+  height: 70vmax;
+  width: 100vmax;
 }
 
 .App-logo {

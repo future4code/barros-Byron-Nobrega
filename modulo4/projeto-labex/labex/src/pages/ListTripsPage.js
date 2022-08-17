@@ -1,17 +1,8 @@
 import React from "react";
 import {useNavigate} from "react-router-dom"
-import {BaseUrl, Aluno, Trips} from "../constants/constants"
-import useGetRequesData from "../hooks/useGetRequestData";
+import ListTripsComponents from "../components/ListTripsComponents/ListTrisComponents";
 
 function ListTripsPage() {
-
-    const [dataTrips, isLoadingTrips, erroTrips]=useGetRequesData(`${BaseUrl}${Aluno}${Trips}`);
-
-    const ListTrips =dataTrips&&dataTrips.map((item)=>{
-        return(
-            <li key={item.id}>{item.name}</li>
-        )
-    })   
 
     const navigate = useNavigate();
 
@@ -24,12 +15,10 @@ function ListTripsPage() {
 
 return(
     <section>
-        <h1>List Trips</h1>
-        <button onClick={buttonReturn}>Voltar</button>
-        <button onClick={ApplicationFormPage}>Inscreva-se</button>
-        {isLoadingTrips&&"Carregando..."}
-        {!isLoadingTrips&&dataTrips&&ListTrips}
-        {!isLoadingTrips&&!dataTrips&&erroTrips}
+    <ListTripsComponents
+        buttonReturn={buttonReturn}
+        ApplicationFormPage={ApplicationFormPage}
+    />
     </section>
 )
 

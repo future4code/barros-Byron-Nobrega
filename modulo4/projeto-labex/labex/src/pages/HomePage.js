@@ -1,11 +1,12 @@
 import React from "react";
 import {useNavigate} from "react-router-dom"
+import ButtonsPrincipais from "../components/MenuBotao/MenuBottonTitle";
 
 function HomePage() {
 
     const navigate = useNavigate();
 
-    const ListTripsPage = ()=>{
+    const listTripsPage = ()=>{
         navigate("/lista-viagens")
     }
     const login = ()=>{
@@ -14,9 +15,13 @@ function HomePage() {
 
 return(
     <section>
-        <h1>Home Page </h1>
-        <button onClick={ListTripsPage}>Ver Lista de Viagens</button>
-        <button onClick={login}>Área Administrativa</button>
+        <ButtonsPrincipais
+        listTripsPage ={listTripsPage}
+        login={login}
+        title={"Viagens Estelares é com a LABEX"}
+        labelButtonVoltar={"VerLista de Viagens"}
+        labelButtonLogin={"Área Administrativa"}
+        />
     </section>
 
 )

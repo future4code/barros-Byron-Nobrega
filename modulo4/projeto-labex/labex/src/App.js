@@ -1,4 +1,5 @@
 import './App.css';
+import './imgApp.jpg'
 import Router from './components/Router';
 
 function App() {
