@@ -1,33 +1,33 @@
 import React from "react";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import FromCreateTrip from "../components/FormCreateTrip/FormCreateTrip";
+import { mockDeDadosPlaneta } from "../constants/mockDeDadosPlanetas";
+import { useProtectedPage } from "../hooks/useProtectedPage";
 
 function CreateTripPage() {
+  useProtectedPage();
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-    const buttonReturn = (event)=>{
-        event.preventDefault()
-        navigate(-1)
-    }
+  const buttonReturn = (event) => {
+    event.preventDefault();
+    navigate(-1);
+  };
+  const ListaPlanetas = mockDeDadosPlaneta&&mockDeDadosPlaneta.map((item, index) => {
+    return (
+      <option key={index} value={item.planeta}>
+        {item.planeta}
+      </option>
+    );
+  });
 
-return(
+  return (
     <section>
-        <form /* onSubmit={} */>
-        <h1>Page CreateTri</h1>
-        <input type="text" required pattern="^.{5,}" placeholder="Nome"/>
-        <select>
-            <option>Escolha o Planeta</option>
-        </select>
-        <input type="date" required  placeholder="Nome"/>
-        <input type="text" pattern="^.{30,}" required placeholder="Descrição"/>
-        <input type="number" required min={50} placeholder="Duração em dias"/>
-        <button onClick={buttonReturn}>Voltar</button>
-        <button>Enviar</button>
-        </form>
-
+      <FromCreateTrip
+        buttonReturn={buttonReturn}
+        ListaPlanetas={ListaPlanetas}
+      />
     </section>
-)
-
-    
+  );
 }
 
 export default CreateTripPage;

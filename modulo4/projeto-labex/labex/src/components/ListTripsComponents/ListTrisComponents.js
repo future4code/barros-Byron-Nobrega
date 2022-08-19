@@ -24,7 +24,7 @@ function ListTripsComponents(props) {
     })  
     return(
         <SectionListTrips>
-            <h1>List Trips</h1>
+            <h1>Lista de Viagens</h1>
             <div>
             <ButtonTela onClick={props.buttonReturn}>Página Anterior</ButtonTela>
             <ButtonTela onClick={props.ApplicationFormPage}>Inscreva-se</ButtonTela>

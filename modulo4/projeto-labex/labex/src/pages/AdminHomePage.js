@@ -1,28 +1,32 @@
 import React from "react";
-import {useNavigate} from "react-router-dom"
-
+import { useNavigate } from "react-router-dom";
+import ListaTripsHomeAdmin from "../components/AdminHomePage/ListaTripsHomeAdmin";
+import { useProtectedPage } from "../hooks/useProtectedPage";
 
 function AdminHomePage() {
+  useProtectedPage();
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const buttonReturn = () => {
+    navigate(-1);
+  };
+  const CreateTripPage = () => {
+    navigate("/criar-viagem");
+  };
+  const handleLogout = () => {
+    navigate("/");
+    localStorage.clear();
+  };
 
-    const buttonReturn = ()=>{
-        navigate(-1) 
-    }
-    const CreateTripPage = ()=>{
-        navigate("/criar-viagem")
-    }
-
-return(
-    <>
-    <h1> Admin Home</h1>
-    <button onClick={buttonReturn}>Voltar</button>
-    <button onClick={CreateTripPage}>Cadastra Nova Viagem</button>
-
-    </>
-)
-
-    
+  return (
+    <section>
+      <ListaTripsHomeAdmin
+      CreateTripPage={CreateTripPage}
+      buttonReturn={buttonReturn}
+      handleLogout={handleLogout}
+      />
+    </section>
+  );
 }
 
 export default AdminHomePage;
