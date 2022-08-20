@@ -25,7 +25,7 @@ function ButtonLogin(props) {
     <ConteinerLogin>
       <h1>Login</h1>
       <form onSubmit={fazerLogin}>
-        <label htmlFor="email">E-mail: </label>
+        {/* <label htmlFor="email">E-mail: </label> */}
         <input
           id="email"
           name="email"
@@ -36,7 +36,7 @@ function ButtonLogin(props) {
           required
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
         />
-        <label htmlFor="password">Senha: </label>
+        {/* <label htmlFor="password">Senha: </label> */}
         <input
           id="password"
           name="password"

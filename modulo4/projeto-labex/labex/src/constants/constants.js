@@ -8,4 +8,5 @@ export const Trips = "/trips"
 export const Trip = "/trip"
 export const Apply ="/apply"
 export const Login ="/login"
+export const Candidates ="/candidates"
 

@@ -13,17 +13,29 @@ export const ConteinerHomeAdmin = styled.div`
   div{
     width: 60vw;
   }
+  a{
+    cursor: pointer;
+  }
+  button{
+   :hover {
+    background: red;
+    transition: width 2s;
+    cursor: pointer;
+  }
+  }
 `;
 
-export const ConteinerLisTripsAdmin = styled.div`
+export const ConteinerLisTripsAdmin = styled.p`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   border: solid 2px black;
   border-radius: 10px;
   margin: 5%;
   background-color: rgba(0, 0, 0, 0.5);
+  width: 54vw;
+  height: 3vw;
   `;
 
 export const ButtonTelaHomeAdmin = styled.button`
@@ -41,3 +53,9 @@ export const ButtonTelaHomeAdmin = styled.button`
     cursor: pointer;
   }
 `;
+
+export const LixeiraImg = styled.img`
+  width: 3vw;
+  height: 3vh;
+  background: transparent;
+`

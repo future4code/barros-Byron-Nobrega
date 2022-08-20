@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { Aluno, BaseUrl, Trips } from "../../constants/constants";
 import useGetRequesData from "../../hooks/useGetRequestData";
+import Lixeira from "../../image/lixera.png"
 import {
   ButtonTelaHomeAdmin,
   ConteinerHomeAdmin,
   ConteinerLisTripsAdmin,
+  LixeiraImg,
 } from "./ListaTripsHomeAdminStyle";
 
 function ListaTripsHomeAdmin(props) {
@@ -23,9 +25,9 @@ function ListaTripsHomeAdmin(props) {
     dataTrips.map((item) => {
       return (
         <ConteinerLisTripsAdmin key={item.id}>
-          <h2>{item.name}</h2>
-          <h2>Planeta: {item.planet} {}</h2>
-          <button onClick={()=>{TripDetailsPage(item.id)}}  >Detalhes</button>
+          <a onClick={()=>{TripDetailsPage(item.id)}}><h2>{item.name}</h2></a>
+          <button /* onClick={()=>{TripDetailsPage(item.id)}} */  ><LixeiraImg src={Lixeira} alt="Lixeira" /></button>
+          
         </ConteinerLisTripsAdmin>
       );
     });

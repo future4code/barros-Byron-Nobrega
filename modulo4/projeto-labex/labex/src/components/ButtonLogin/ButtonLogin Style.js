@@ -19,13 +19,13 @@ export const ConteinerLogin = styled.div`
 
 export const LoginButton = styled.button`
   color: white;
-  font-size: 110%;
+  font-size: 90%;
   background-color: Gray;
   border-radius: 5px;
   border: none;
-  width: 15%;
-  height: 50px;
-  margin: 3%;
+  width: 13vw;
+  height: 3vh;
+  margin: 1%;
   :hover {
     background: red;
     transition: width 2s;
