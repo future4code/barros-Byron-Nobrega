@@ -25,7 +25,7 @@ export const ConteinerHomeAdmin = styled.div`
   }
 `;
 
-export const ConteinerLisTripsAdmin = styled.p`
+export const ConteinerLisTripsAdmin = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -36,6 +36,14 @@ export const ConteinerLisTripsAdmin = styled.p`
   background-color: rgba(0, 0, 0, 0.5);
   width: 54vw;
   height: 3vw;
+  button{
+    background: transparent;
+    border: none;
+    color: white;
+    :hover{
+      background: none;
+    }
+  }
   `;
 
 export const ButtonTelaHomeAdmin = styled.button`

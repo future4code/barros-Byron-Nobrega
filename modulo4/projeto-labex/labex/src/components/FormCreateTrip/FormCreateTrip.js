@@ -7,6 +7,7 @@ import { ButtonCreateTrip, ConteinerDiv, InputsCreateTrip, SelectCreateTrip } fr
 
 
 function FromCreateTrip(props) {
+ 
     const [body, onChange, clear] = useForm({ 
         name: "", 
         planet:"",
@@ -17,8 +18,13 @@ function FromCreateTrip(props) {
 
      const createTrip = (event) => {
         event.preventDefault();
+        console.log(`${BaseUrl}${Aluno}${Trips}`, body);
         axios
-          .post(`${BaseUrl}${Aluno}${Trips}`, body)
+          .post(`${BaseUrl}${Aluno}${Trips}`, body,{
+            headers:{
+              auth:localStorage.getItem("token")
+            }
+          })
           .then((response) => {
             alert("Criado com sucesso!")
             

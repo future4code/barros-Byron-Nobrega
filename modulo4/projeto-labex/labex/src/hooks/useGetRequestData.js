@@ -5,6 +5,7 @@ const useGetRequesData = (url) => {
   const [data, setData] = useState(undefined);
   const [isLoading, setIsLoading] = useState(undefined);
   const [erro, setErro] = useState(undefined);
+  const [reload, setReload] = useState(false)
 
   useEffect(() => {
     setIsLoading(true);
@@ -18,9 +19,9 @@ const useGetRequesData = (url) => {
         setIsLoading(false);
         setErro(error.response.data);
       });
-  }, [url]);
+  }, [url,reload]);
 
-  return [data, isLoading, erro];
+  return [data, isLoading, erro, reload, setReload];
 };
 
 export default useGetRequesData;

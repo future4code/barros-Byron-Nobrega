@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Aluno, BaseUrl, Trips } from "../../constants/constants";
 import useGetRequesData from "../../hooks/useGetRequestData";
@@ -15,18 +16,32 @@ function ListaTripsHomeAdmin(props) {
     const TripDetailsPage = (id) => {
     navigate('/detalhes_Viagens/'+id);
   };
-  const [dataTrips, isLoadingTrips, erroTrips] = useGetRequesData(
+  const [dataTrips, isLoadingTrips, erroTrips, reload, setReload] = useGetRequesData(
     `${BaseUrl}${Aluno}${Trips}`
   );
- 
+  const deleteTrip = (idDelete) => {
+    console.log(`${BaseUrl}${Aluno}${Trips}/`+ idDelete);
+    axios
+      .delete(`${BaseUrl}${Aluno}${Trips}/`+ idDelete, {
+        headers: {
+          auth: localStorage.getItem("token"),
+        },
+      })
+      .then((response) => {
+        setReload(!reload);
+        alert("Excluido com sucesso")
+      })
+      .catch((error) => {});
+      alert('Erro ')
+  };
 
     const ListTrips =
     dataTrips &&
     dataTrips.map((item) => {
       return (
         <ConteinerLisTripsAdmin key={item.id}>
-          <a onClick={()=>{TripDetailsPage(item.id)}}><h2>{item.name}</h2></a>
-          <button /* onClick={()=>{TripDetailsPage(item.id)}} */  ><LixeiraImg src={Lixeira} alt="Lixeira" /></button>
+          <button onClick={()=>{TripDetailsPage(item.id)}}><h2>{item.name}</h2></button>
+          <button onClick={()=>{deleteTrip(item.id)}} ><LixeiraImg src={Lixeira} alt="Lixeira" /></button>
           
         </ConteinerLisTripsAdmin>
       );
