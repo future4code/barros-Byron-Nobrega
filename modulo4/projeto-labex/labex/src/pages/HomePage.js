@@ -19,7 +19,7 @@ return(
         listTripsPage ={listTripsPage}
         login={login}
         title={"Viagens Estelares é com a LABEX"}
-        labelButtonVoltar={"VerLista de Viagens"}
+        labelButtonVoltar={"Ver Lista de Viagens"}
         labelButtonLogin={"Área Administrativa"}
         />
     </section>

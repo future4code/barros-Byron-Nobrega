@@ -2,7 +2,8 @@ import axios from "axios";
 import React from "react";
 import { Aluno, BaseUrl, Login } from "../../constants/constants";
 import { useForm } from "../../hooks/useForm";
-import { ConteinerLogin, LoginButton } from "./ButtonLogin Style";
+import { ContainerLogin, LoginButton } from "./Login Style";
+
 
 function ButtonLogin(props) {
   const [body, onChange, clear] = useForm({ email: "", password: "" });
@@ -22,10 +23,10 @@ function ButtonLogin(props) {
     clear();
   };
   return (
-    <ConteinerLogin>
-      <h1>Login</h1>
+    <ContainerLogin>
       <form onSubmit={fazerLogin}>
-        {/* <label htmlFor="email">E-mail: </label> */}
+      <h1>Login</h1>
+        
         <input
           id="email"
           name="email"
@@ -36,7 +37,7 @@ function ButtonLogin(props) {
           required
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
         />
-        {/* <label htmlFor="password">Senha: </label> */}
+        
         <input
           id="password"
           name="password"
@@ -54,7 +55,7 @@ function ButtonLogin(props) {
         <LoginButton>Enviar</LoginButton>
         </div>
       </form>
-    </ConteinerLogin>
+    </ContainerLogin>
   );
 }
 export default ButtonLogin;

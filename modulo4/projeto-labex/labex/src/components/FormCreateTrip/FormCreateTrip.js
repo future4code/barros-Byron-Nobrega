@@ -3,7 +3,7 @@ import axios from "axios";
 import React from "react";
 import { Aluno, BaseUrl, Trips } from "../../constants/constants";
 import { useForm } from "../../hooks/useForm";
-import { ButtonCreateTrip, ConteinerDiv, InputsCreateTrip, SelectCreateTrip } from "./StyleFormCreateTrip";
+import { ButtonCreateTrip, ContainerDiv, InputsCreateTrip, SelectCreateTrip } from "./StyleFormCreateTrip";
 
 
 function FromCreateTrip(props) {
@@ -37,7 +37,7 @@ function FromCreateTrip(props) {
       }; 
 
     return(
-        <ConteinerDiv>
+        <ContainerDiv>
         <h1>Cadastrar Viagem</h1>
         <form onSubmit={createTrip}  >
         <InputsCreateTrip id="name" name="name" value={body.name} onChange={onChange} type="text" required pattern="^.{5,}" placeholder="Título da viagem"/>
@@ -54,7 +54,7 @@ function FromCreateTrip(props) {
         </div>
         </form>
 
-    </ConteinerDiv>
+    </ContainerDiv>
     )
     
 }

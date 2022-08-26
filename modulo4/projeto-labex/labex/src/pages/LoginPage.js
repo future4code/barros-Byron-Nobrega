@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import ButtonLogin from "../components/ButtonLogin/ButtonLogin";
+import ButtonLogin from "../components/Login/Login";
+
 
 
 function LoginPage() {

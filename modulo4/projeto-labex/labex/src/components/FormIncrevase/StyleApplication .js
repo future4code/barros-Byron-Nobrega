@@ -1,22 +1,26 @@
 import styled from "styled-components";
 
-export const ConteinerDiv = styled.div`
+export const ContainerDiv = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.3);
   height: 70vmax;
- 
+
   h1 {
     font-size: 200%;
     margin: 5%;
   }
-  form{
+  form {
     display: flex;
-  flex-direction: column;
-  width: 80vw;
-  justify-content: center;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 0 2em white;
+    border-radius: 20px;
+    border: 3px solid black;
+    padding-top: 3%;
+    width: 50vw;
   }
 `;
 
@@ -27,7 +31,7 @@ export const InputApplication = styled.input`
   background-color: rgba(0, 0, 0, 0.3);
 `;
 export const SelectApplication = styled.select`
-  height: 30px;
+  height: 35px;
   margin: 10px;
   color: white;
   background-color: rgba(0, 0, 0, 0.3);

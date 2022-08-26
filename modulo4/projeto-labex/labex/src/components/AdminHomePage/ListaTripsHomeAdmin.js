@@ -2,71 +2,81 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Aluno, BaseUrl, Trips } from "../../constants/constants";
 import useGetRequesData from "../../hooks/useGetRequestData";
-import Lixeira from "../../image/lixera.png"
+import Lixeira from "../../img/lixera.png";
 import {
   ButtonTelaHomeAdmin,
-  ConteinerHomeAdmin,
-  ConteinerLisTripsAdmin,
+  ContainerButton,
+  ContainerHomeAdmin,
+  ContainerLisTripsAdmin,
+  ContainerScroll,
   LixeiraImg,
 } from "./ListaTripsHomeAdminStyle";
 
 function ListaTripsHomeAdmin(props) {
-    const navigate = useNavigate();
-     
-    const TripDetailsPage = (id) => {
-    navigate('/detalhes_Viagens/'+id);
+  const navigate = useNavigate();
+
+  const TripDetailsPage = (id) => {
+    navigate("/detalhes_Viagens/" + id);
   };
-  const [dataTrips, isLoadingTrips, erroTrips, reload, setReload] = useGetRequesData(
-    `${BaseUrl}${Aluno}${Trips}`
-  );
+  const [dataTrips, isLoadingTrips, erroTrips, reload, setReload] =
+    useGetRequesData(`${BaseUrl}${Aluno}${Trips}`);
   const deleteTrip = (idDelete) => {
-    console.log(`${BaseUrl}${Aluno}${Trips}/`+ idDelete);
     axios
-      .delete(`${BaseUrl}${Aluno}${Trips}/`+ idDelete, {
+      .delete(`${BaseUrl}${Aluno}${Trips}/` + idDelete, {
         headers: {
           auth: localStorage.getItem("token"),
         },
       })
       .then((response) => {
         setReload(!reload);
-        alert("Excluido com sucesso")
+        alert("Excluido com sucesso");
       })
-      .catch((error) => {});
-      alert('Erro ')
+      .catch((error) => {
+        alert("Não foi possível Excluir a Viagem ");
+      });
   };
 
-    const ListTrips =
+  const ListTrips =
     dataTrips &&
     dataTrips.map((item) => {
       return (
-        <ConteinerLisTripsAdmin key={item.id}>
-          <button onClick={()=>{TripDetailsPage(item.id)}}><h2>{item.name}</h2></button>
-          <button onClick={()=>{deleteTrip(item.id)}} ><LixeiraImg src={Lixeira} alt="Lixeira" /></button>
-          
-        </ConteinerLisTripsAdmin>
+        <ContainerLisTripsAdmin key={item.id}>
+         
+          <button
+            onClick={() => {
+              TripDetailsPage(item.id);
+            }}
+          >
+            <h2>{item.name}</h2>
+          </button>
+          <button
+            onClick={() => {
+              deleteTrip(item.id);
+            }}
+          >
+            <LixeiraImg src={Lixeira} alt="Lixeira" />
+          </button>
+        </ContainerLisTripsAdmin>
       );
     });
 
   return (
-    <ConteinerHomeAdmin>
+    <ContainerHomeAdmin>
       <h1> Painel Administrativo</h1>
-      <div>
-        <ButtonTelaHomeAdmin onClick={props.buttonReturn}>
-          Voltar
-        </ButtonTelaHomeAdmin>
+      <ContainerButton>
         <ButtonTelaHomeAdmin onClick={props.CreateTripPage}>
           Cadastra Nova Viagem
         </ButtonTelaHomeAdmin>
         <ButtonTelaHomeAdmin onClick={props.handleLogout}>
           Logout
         </ButtonTelaHomeAdmin>
-      </div>
-      <div>
+      </ContainerButton>
+      
         {isLoadingTrips && <h3>Carregando...</h3>}
-        {!isLoadingTrips && dataTrips && ListTrips}
+        {!isLoadingTrips && dataTrips &&<ContainerScroll>{ListTrips}</ContainerScroll>}
         {!isLoadingTrips && !dataTrips && erroTrips}
-      </div>
-    </ConteinerHomeAdmin>
+      
+    </ContainerHomeAdmin>
   );
 }
 export default ListaTripsHomeAdmin;

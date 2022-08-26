@@ -10,10 +10,11 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  
   height: 70vmax;
   width: 100vmax;
 }
+
+
 
 .App-logo {
   height: 40vmin;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import {
@@ -11,8 +11,8 @@ import {
 import useGetDetailsRequesData from "../../hooks/useGetDetailsRequestData";
 import {
   ButtonReturn,
-  ConteinerDetailsApproved,
-  ConteinerDetailsTrip,
+  ContainerDetailsApproved,
+  ContainerDetailsTrip,
   HeaderDetails,
 } from "./TripDetailsStyle";
 
@@ -20,32 +20,43 @@ function ComponentTripDetails() {
   const navigate = useNavigate();
   const pathParams = useParams();
   const idTrps = pathParams.id;
-  const [approve, setApprove] = useState(false);
-  const [idCandidate, setIdCandidate] = useState("");
 
-  const body = {
-    approve,
-  };
   const buttonReturn = () => {
     navigate(-1);
   };
 
   const [dataTrips, isLoadingTrips, erroTrips, reload, setReload] =
     useGetDetailsRequesData(`${BaseUrl}${Aluno}${Trip}/${idTrps}`);
-  useEffect(() => {
-    DecidesCandidate(idCandidate);
-  }, [idCandidate]);
 
-  const handleApprove = (id) => {
-    setIdCandidate(id);
-  };
-  const handleReApprove = (id) => {
-    setIdCandidate(id);
-  };
-
-  const DecidesCandidate = (candidateId) => {
+  const DecidesCandidate = (candidateId, approve) => {
+    console.log(
+      BaseUrl +
+        Aluno +
+        Trips +
+        "/" +
+        idTrps +
+        Candidates +
+        "/" +
+        candidateId +
+        "/decide",
+      {
+        approve,
+      }
+    );
     axios
-      .put(BaseUrl + Aluno +Trips +"/" +idTrps + Candidates + "/" + candidateId +"/decide", body,
+      .put(
+        BaseUrl +
+          Aluno +
+          Trips +
+          "/" +
+          idTrps +
+          Candidates +
+          "/" +
+          candidateId +
+          "/decide",
+        {
+          approve,
+        },
         {
           headers: {
             auth: localStorage.getItem("token"),
@@ -62,15 +73,15 @@ function ComponentTripDetails() {
     if (!isLoadingTrips && dataTrips && dataTrips) {
       const { name, planet, date, durationInDays, description } = dataTrips;
       return (
-        <ConteinerDetailsTrip>
+        <ContainerDetailsTrip>
           <h2>{name}</h2>
           <div>
             <p>Planeta: {planet}</p>
             <p>Data Viagem: {date}</p>
             <p>Duração: {durationInDays}</p>
           </div>
-          <text>{description}</text>
-        </ConteinerDetailsTrip>
+          <p>{description}</p>
+        </ContainerDetailsTrip>
       );
     }
   };
@@ -80,7 +91,7 @@ function ComponentTripDetails() {
     dataTrips &&
     dataTrips.candidates.map((item) => {
       return (
-        <ConteinerDetailsTrip key={item.id}>
+        <ContainerDetailsTrip key={item.id}>
           <h2>{item.name}</h2>
           <div>
             <p>Idade: {item.age}</p>
@@ -91,31 +102,31 @@ function ComponentTripDetails() {
           <div>
             <ButtonReturn
               onClick={() => {
-                handleApprove(item.id, setApprove(true));
+                DecidesCandidate(item.id, true);
               }}
             >
               Aprovar
             </ButtonReturn>
             <ButtonReturn
               onClick={() => {
-                handleReApprove(item.id, setApprove(false));
+                DecidesCandidate(item, false);
               }}
             >
               Reprovar
             </ButtonReturn>
           </div>
-        </ConteinerDetailsTrip>
+        </ContainerDetailsTrip>
       );
     });
-  
+
   const ListApprove =
     !isLoadingTrips &&
     dataTrips &&
     dataTrips.approved.map((item) => {
       return (
-        <ConteinerDetailsApproved key={item.id}>
+        <ContainerDetailsApproved key={item.id}>
           {item.name}
-        </ConteinerDetailsApproved>
+        </ContainerDetailsApproved>
       );
     });
 

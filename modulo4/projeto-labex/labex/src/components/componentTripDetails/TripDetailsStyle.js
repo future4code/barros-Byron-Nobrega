@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ConteinerDetailsTrip = styled.div`
+export const ContainerDetailsTrip = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,7 +27,7 @@ export const HeaderDetails = styled.section`
 `
 
 
-export const ConteinerDetailsApproved = styled.li`
+export const ContainerDetailsApproved = styled.li`
   border: solid 2px black;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.5);

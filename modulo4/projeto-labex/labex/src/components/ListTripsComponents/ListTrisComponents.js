@@ -1,7 +1,7 @@
 import React from "react";
 import { Aluno, BaseUrl, Trips } from "../../constants/constants";
 import useGetRequesData from "../../hooks/useGetRequestData";
-import { ButtonTela, ConteinerLisTrips, SectionListTrips } from "./ListTripsStyle";
+import { ButtonTela, ContainerLisTrips, ContainerScroll, PositionButton, SectionListTrips } from "./ListTripsStyle";
 
 
 
@@ -11,7 +11,7 @@ function ListTripsComponents(props) {
 
     const ListTrips =dataTrips&&dataTrips.map((item)=>{
         return(
-            <ConteinerLisTrips key={item.id}>
+            <ContainerLisTrips key={item.id}>
                 <h2>{item.name}</h2>
                  <h2>Planeta: {item.planet}</h2>
                <>
@@ -19,21 +19,21 @@ function ListTripsComponents(props) {
                 <p>Data da Viagem: <b>{item.date}</b></p>
                 <p> Duração em dias: {item.durationInDays}</p>
                 <p> {item.description}</p>
-            </ConteinerLisTrips>
+            </ContainerLisTrips>
         )
     })  
     return(
         <SectionListTrips>
             <h1>Lista de Viagens</h1>
-            <div>
+            <PositionButton>
             <ButtonTela onClick={props.buttonReturn}>Página Anterior</ButtonTela>
             <ButtonTela onClick={props.ApplicationFormPage}>Inscreva-se</ButtonTela>
-            </div>
-            <div>
+            </PositionButton>
+            <ContainerScroll>
             {isLoadingTrips&&<h3>Carregando...</h3>}
             {!isLoadingTrips&&dataTrips&&ListTrips}
             {!isLoadingTrips&&!dataTrips&&erroTrips}
-            </div>
+            </ContainerScroll>
             
         </SectionListTrips>
     )

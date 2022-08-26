@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ConteinerHomeAdmin = styled.div`
+export const ContainerHomeAdmin = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,43 +8,41 @@ export const ConteinerHomeAdmin = styled.div`
   height: 70vmax;
   h1 {
     font-size: 200%;
-    margin: 6% 0;
-  }
-  div{
-    width: 60vw;
-  }
-  a{
-    cursor: pointer;
-  }
-  button{
-   :hover {
-    background: red;
-    transition: width 2s;
-    cursor: pointer;
-  }
+    margin: 4% 0;
   }
 `;
 
-export const ConteinerLisTripsAdmin = styled.div`
+export const ContainerScroll = styled.div`
+  overflow-y: auto;
+  height: 45vw;
+`;
+export const ContainerButton = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding: 3%;
+`;
+
+export const ContainerLisTripsAdmin = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border: solid 2px black;
+  border: 2px solid black;
   border-radius: 10px;
-  margin: 5%;
+  margin: 3%;
   background-color: rgba(0, 0, 0, 0.5);
-  width: 54vw;
-  height: 3vw;
-  button{
+  height: 4vw;
+  button {
     background: transparent;
     border: none;
     color: white;
-    :hover{
+    :hover {
       background: none;
+      transition: width 2s;
+      cursor: pointer;
     }
   }
-  `;
+`;
 
 export const ButtonTelaHomeAdmin = styled.button`
   color: white;
@@ -66,4 +64,4 @@ export const LixeiraImg = styled.img`
   width: 3vw;
   height: 3vh;
   background: transparent;
-`
+`;

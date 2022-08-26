@@ -7,9 +7,6 @@ function AdminHomePage() {
   useProtectedPage();
   const navigate = useNavigate();
 
-  const buttonReturn = () => {
-    navigate(-1);
-  };
   const CreateTripPage = () => {
     navigate("/criar-viagem");
   };
@@ -22,7 +19,6 @@ function AdminHomePage() {
     <section>
       <ListaTripsHomeAdmin
       CreateTripPage={CreateTripPage}
-      buttonReturn={buttonReturn}
       handleLogout={handleLogout}
       />
     </section>
