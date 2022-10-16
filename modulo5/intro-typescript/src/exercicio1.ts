@@ -1,8 +1,8 @@
-const InputUser = require("readline-sync")
+const inputUser = require("readline-sync")
 
-const hipotenusa = InputUser.question("Qaul o valor da hipotenusa?")
-const catetoOposto = InputUser.question("Qaul o valor do cateto oposto?")
-const catetoAdjacente = InputUser.question("Qaul o valor da cateto adjacente?")
+const hipotenusa = inputUser.question("Qaul o valor da hipotenusa?")
+const catetoOposto = inputUser.question("Qaul o valor do cateto oposto?")
+const catetoAdjacente = inputUser.question("Qaul o valor da cateto adjacente?")
 
 
 function checaTriangulo(a:number, b:number, c:number):string{
