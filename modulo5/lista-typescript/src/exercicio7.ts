@@ -1,7 +1,11 @@
  type Produtos ={
     nome:string,
     quantidade: number,
-    valorUnitario:string | number
+    valorUnitario:number }
+ type Produtoss ={
+    nome:string,
+    quantidade: number,
+    valorUnitario:string
  }
 
 
@@ -20,6 +24,13 @@ const ajustaPreco = (preco :number): string => {
 	return "R$ "+valorAjustado
 }
 
-function name(params:type) {
+function estoqueOrdenado(arr:Array<Produtos>):Array<Produtoss> {
+    const ordenar:Array<Produtoss> = arr.map((item)=>{
+       return{nome:item.nome,quantidade:item.quantidade,valorUnitario:ajustaPreco(item.valorUnitario)}
+    })
     
+    return ordenar
+
 }
+
+console.log(estoqueOrdenado(estoqueAtual));

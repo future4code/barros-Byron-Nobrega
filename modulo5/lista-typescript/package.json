@@ -12,7 +12,8 @@
     "exercicio5":"tsc && node ./build/exercicio5",
     "exercicio6":"tsc && node ./build/exercicio6",
     "exercicio7":"tsc && node ./build/exercicio7",
-    "exercicio8":"tsc && node ./build/exercicio8"
+    "exercicio8":"tsc && node ./build/exercicio8",
+    "exercicio9":"tsc && node ./build/exercicio9"
   },
   "keywords": [],
   "author": "",
