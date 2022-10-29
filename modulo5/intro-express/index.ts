@@ -43,7 +43,7 @@ app.delete("/users/:id", (req, res) => {
         if(users[i].id===idUser) indexUser=i; 
     }
     indexUser?users.splice(Number(indexUser),1):res.status(404).send("Id do usuário não encontrado!");
-    res.status(200).send(users);
+    res.status(200).send(users)
   });
 
 app.delete("/posts/:id", (req, res) => {
