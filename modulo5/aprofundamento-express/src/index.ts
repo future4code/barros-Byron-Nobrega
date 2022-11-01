@@ -17,16 +17,22 @@ app.get("/to_dos",(req:Request, res:Response)=>{
  });
 
 app.get("/to_dos/:completed",(req:Request, res:Response)=>{
-    const completed = req.params.completed
-    if(!completed){ res.status(400).send("o query params é obrigatorio")};
+    let completed:any = req.params.completed
+    if(completed==="true"){ 
+        completed = true
+    }else if(completed==="false"){
+        completed = false
+    }else{
+        res.status(400).send("param é obrigatório")
+    }
     const to_dosTask = t.to_dos.filter((tasks)=>{
-        return tasks.completed===Boolean(completed)
+        return tasks.completed===completed
     })
     
     res.status(200).send(to_dosTask)
 });
 
-app.get("/new",(req:Request, res:Response)=>{
+app.put("/to_dos/addtask",(req:Request, res:Response)=>{
      const { userId,id,title,completed} = req.body
     console.log(req.body);
     
@@ -34,7 +40,7 @@ app.get("/new",(req:Request, res:Response)=>{
         res.status(400).send("Favor verificar body")
     }
     const taskadd = func.addTask(t.to_dos,userId,id,title,completed)
-    res.status(200).send("taskadd")
+    res.status(200).send(taskadd)
 });
  
 
