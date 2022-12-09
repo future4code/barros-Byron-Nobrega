@@ -12,9 +12,9 @@ export class UserDatabase extends BaseDatabase {
         return result
     }
     public static getUserById = async(id:number) =>{
-        const result = await UserDatabase.connection(TABLE_USERS)
+        const [result] = await UserDatabase.connection.raw(`select * from Labe_Users where id = ${id}`)/* (TABLE_USERS)
         .select()
-        .where(`id = "${id}"`);
+        .where(`id = "${id}"`); */
         return result
     }
 

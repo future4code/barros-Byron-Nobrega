@@ -11,9 +11,7 @@ export class ProductDatabase extends BaseDatabase {
         return result
     }
     public static getProducts = async(id:string)=>{
-        const result = await ProductDatabase.connection(TABLE_PRODUCTS)
-        .select()
-        .where(`id = ${id}`);
+        const [result] = await ProductDatabase.connection.raw(`select * from Labe_Products where id = ${id}`);
         return result
     }
 }

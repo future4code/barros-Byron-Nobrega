@@ -24,8 +24,7 @@ export const createPurchase = async (req: Request, res: Response) => {
 
     
     const findUser = await UserDatabase.getUserById(userId);
-    console.log(findUser); 
-    
+       
     /* const findUser = await connection(TABLE_USERS)
       .select()
       .where({ id: userId });  */
@@ -36,6 +35,7 @@ export const createPurchase = async (req: Request, res: Response) => {
     }
 
     const findProduct = await ProductDatabase.getProducts(productId);
+      
 
     /* const findProduct = await connection(TABLE_PRODUCTS)
       .select()
