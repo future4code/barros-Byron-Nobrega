@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "tsc && node ./build/index.js",
     "dev": "ts-node-dev ./src/index.ts",
-    "start": "tsc && node ./build/index.js"
+    "migrations": "tsc && node ./build/data/migrations.js"
   },
   "author": "Byron",
   "license": "ISC",
