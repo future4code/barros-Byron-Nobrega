@@ -12,6 +12,10 @@ export class UserBusiness {
         );
       }
 
+      if(email.indexOf("@") === -1){
+        throw new Error("Invalid Email");
+    }
+
       if (password.length < 6) {
         throw new Error("Senha muito curta");
       }
