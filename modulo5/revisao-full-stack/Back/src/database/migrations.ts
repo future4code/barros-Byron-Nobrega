@@ -16,7 +16,7 @@ CREATE TABLE Case_Products (
 );
 CREATE TABLE Case_Orders (
   id INT AUTO_INCREMENT NOT NULL primary key,
-  order_data date,
+  order_date date,
   delivery_date DATE,
   qty int,
   fk_client INT,

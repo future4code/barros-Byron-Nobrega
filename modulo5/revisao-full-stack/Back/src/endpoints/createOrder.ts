@@ -18,7 +18,19 @@ export const createOrder =async (req: Request, res: Response) => {
         }
 
         //verificar stock
-        await products.forEach(async product => {
+        const idsProducts = products.map((product)=>product.id)
+        const stockProducts = await connection.select('qty_stock').from('Case_Products')
+        .whereIn('id',idsProducts)
+        
+        for (let i = 0; i < products.length; i++) {
+            if(products[i].qty>stockProducts[i].qty_stock){
+                errorCode = 402;
+                throw new Error("Estoque indisponível!");
+                
+            }
+            
+        }
+       /*  await products.forEach(async product => {
             //get stock
             const getStock = await connection.select("qty_stock")
             .from("Case_Products")
@@ -28,14 +40,14 @@ export const createOrder =async (req: Request, res: Response) => {
             if (stockAtual < product.qty) {
                 throw new Error("Estoque indisponível!")
             }
-        })
+        }) */
 
          //fazer pedido atualizar estoque
         await products.forEach(async product => {
             //adicionba registro
             await  connection("Case_Orders").insert(
                 {
-                    order_date:new Date().toISOString().slice(0,10),
+                    order_dat:new Date().toISOString().slice(0,10),
                     delivery_date,
                     qty:product.qty,
                     fk_client,
