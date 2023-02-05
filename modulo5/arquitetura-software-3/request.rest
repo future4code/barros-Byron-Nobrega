@@ -2,8 +2,8 @@ POST http://localhost:3003/user/create
 Content-Type: application/json
 
 {
-    "name": "teste1",
-    "email": "email2@email.com",
+    "name": "teste7",
+    "email": "email7@email.com",
     "password": "23432535"
 }
 
@@ -18,10 +18,10 @@ POST http://localhost:3003/movie/create
 Content-Type: application/json
 
 {   
-    "title": "teste1",
-    "description":"esta descricao é um teste",
-    "duration":"1000",
-    "release":"2023"
+    "title": "teste10",
+    "description": "esta descricao é um teste",
+    "duration": 1000,
+    "release": 2023
 }
 
 ###

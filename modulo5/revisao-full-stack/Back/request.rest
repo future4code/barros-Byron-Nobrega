@@ -6,7 +6,7 @@ POST http://localhost:3003/client
 Content-Type: application/json
 
 {
-    "name":"Maria Prado"
+    "name":"Byron Smith"
 }
 
 ### Return all Clients

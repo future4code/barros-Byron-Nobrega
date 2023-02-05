@@ -1,10 +1,8 @@
+import Routers from "./routers/Routers";
+
 function App() {
   return (
-    <div>
-      <header>
-        <p>Hello world.</p>
-      </header>
-    </div>
+    <Routers/>
   );
 }
 
