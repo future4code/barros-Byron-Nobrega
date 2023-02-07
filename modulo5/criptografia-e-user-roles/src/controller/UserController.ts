@@ -71,6 +71,7 @@ export class UserController {
           const authenticationData = tokenGenerator.tokenData(token);
           const userBusiness = new UserBusiness()
           const user = await userBusiness.getUserById(authenticationData);
+          
       
           res.status(200).send({
             id: user.id,

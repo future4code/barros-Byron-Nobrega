@@ -12,3 +12,4 @@ userRouter.put('/edit/:id',userController.editUser )
 userRouter.get('/profile',userController.getUserById )
 
 
+
