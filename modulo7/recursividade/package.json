@@ -1,0 +1,20 @@
+{
+  "name": "recursividade",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "hash-tables": "clear && tsnd --transpile-only --ignore-watch node_modules src/hash_tables",
+    "exercise1": "clear && tsnd --transpile-only --ignore-watch node_modules src/exercise1",
+    "exercise2": "clear && tsnd --transpile-only --ignore-watch node_modules src/exercise2",
+    "exercise3": "clear && tsnd --transpile-only --ignore-watch node_modules src/exercise3",
+    "exercise4": "clear && tsnd --transpile-only --ignore-watch node_modules src/exercise4"
+ },
+  "author": "Byron",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^18.15.11",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.0.2"
+  }
+}
