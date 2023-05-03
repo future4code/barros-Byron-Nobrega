@@ -43,12 +43,13 @@ describe("Test performAttack", () => {
       strength: 1000,
     };
     try {
-      performAttack(attacker, defends, validatorMock);
-    } catch (err:any) {
-      expect(err.message).toBe("Invalid character");
+        performAttack(attacker, defends, validatorMock);
+    } catch (error:any) {
+      expect(error.message).toBe("Invalid character");
       expect(validatorMock).toHaveBeenCalled();
       expect(validatorMock).toHaveBeenCalledTimes(1);
       expect(validatorMock).toHaveReturnedTimes(1);
     }
+   
   });
 });
